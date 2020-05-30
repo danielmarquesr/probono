@@ -12,11 +12,10 @@ services:
 
   web:
     build: .
-    command: sh run.sh
+    command: ["sh", "run.sh"]
     ports:
     - '8080:8080'
     volumes:
-    - .:/code
+    - ./api:/code
     depends_on:
     - db
-

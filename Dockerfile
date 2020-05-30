@@ -6,8 +6,8 @@ RUN mkdir /code
 
 WORKDIR /code
 
-RUN apk update && apk add yarn
+ADD api /code
 
-ADD package.json /code
+RUN npm install
 
-CMD ['yarn', 'start']
+CMD ["npx", "nodemon", "server"]
