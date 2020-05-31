@@ -1,0 +1,40 @@
+const { User } = require('../models');
+
+const controller = {};
+
+controller.indexUser = async (req, res) => {
+  const users = await User.findAll({
+    attributes: { exclude: ['createdAt', 'updatedAt', 'password'] }
+  });
+  res.status(200).json(users);
+};
+
+controller.createUser = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.create({ email, password });
+  res.status(201).json(user);
+};
+
+controller.getUser = async (req, res) => {
+  const id = req.params.id;
+  const user = await User.findAll({
+    attributes: { exclude: ['createdAt', 'updatedAt', 'password'] },
+    where: { id }
+  });
+  res.status(200).json(user);
+};
+
+controller.editUser = async (req, res) => {
+  const { email } = req.body;
+  const id = req.params.id;
+  const user = await User.update({ email }, { where: { id } });
+  res.status(200).json({ user });
+};
+
+controller.deleteUser = async (req, res) => {
+  const id = req.params.id;
+  await User.destroy({ where: { id } });
+  res.status(200).json({});
+};
+
+module.exports = controller;
