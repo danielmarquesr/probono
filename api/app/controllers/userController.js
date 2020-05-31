@@ -15,7 +15,7 @@ controller.createUser = async (req, res) => {
   res.status(201).json(user);
 };
 
-controller.getUser = async (req, res) => {
+controller.showUser = async (req, res) => {
   const id = req.params.id;
   const user = await User.findAll({
     attributes: { exclude: ['createdAt', 'updatedAt', 'password'] },

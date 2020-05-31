@@ -6,7 +6,7 @@ const verifyToken = require('../helpers/auth');
 router
   .get('/', verifyToken, userController.indexUser)
   .post('/', userController.createUser)
-  .get('/:id', verifyToken, userController.getUser)
+  .get('/:id', verifyToken, userController.showUser)
   .put('/:id', verifyToken, userController.editUser)
   .delete('/:id', verifyToken, userController.deleteUser);
 

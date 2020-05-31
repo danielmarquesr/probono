@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   User.associate = (models) => {
-    // associations can be defined here
+    User.hasOne(models.Lawyer), { as: 'lawyer' };
+    User.hasOne(models.Client, { as: 'client' });
   };
   return User;
 };
