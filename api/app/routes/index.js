@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express.Router();
+const userRoutes = require('../routes/userRoutes');
+const authRoutes = require('../routes/authRoutes');
 
-app.get('/', (req, res) => {
-  res.status(200).json({ status: 200 });
-});
+app.use('/auth', authRoutes);
+app.use('/users', userRoutes);
 
 module.exports = app;
