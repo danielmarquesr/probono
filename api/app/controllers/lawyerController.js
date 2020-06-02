@@ -1,4 +1,5 @@
 const { User, Lawyer } = require('../models');
+
 const controller = {};
 
 controller.createLawyer = async (req, res) => {
@@ -16,10 +17,9 @@ controller.showLawyer = async (req, res) => {
   const lawyerId = req.params.id;
   const lawyer = await Lawyer.findOne({
     attributes: ['id', 'cna'],
-    include: { model: User, attributes: ['id', 'email'] }
+    include: { model: User, attributes: ['id', 'email'] },
   },
-  { where: { id: lawyerId } }
-  );
+  { where: { id: lawyerId } });
   res.status(200).json(lawyer);
 };
 

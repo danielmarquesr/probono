@@ -8,22 +8,23 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       validate: {
         isEmail: true,
-        notEmpty: true
-      }
+        notEmpty: true,
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true
-      }
-    }
+        notEmpty: true,
+      },
+    },
   }, {});
   User.associate = (models) => {
     User.hasOne(models.Lawyer, { foreignKey: 'userId' });
     User.hasOne(models.Client, { foreignKey: 'userId' });
   };
-  User.beforeCreate((user, options) => {
+  User.beforeCreate((user) => {
+    /* eslint no-param-reassign: ["error", { "props": false }] */
     user.password = bcrypt.hashSync(user.password, 10);
   });
   return User;

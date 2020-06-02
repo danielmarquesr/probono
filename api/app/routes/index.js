@@ -1,9 +1,10 @@
 const express = require('express');
+
 const app = express.Router();
-const authRoutes = require('../routes/authRoutes');
-const userRoutes = require('../routes/userRoutes');
-const lawyerRoutes = require('../routes/lawyerRoutes');
-const clientRoutes = require('../routes/clientRoutes');
+const authRoutes = require('./authRoutes');
+const userRoutes = require('./userRoutes');
+const lawyerRoutes = require('./lawyerRoutes');
+const clientRoutes = require('./clientRoutes');
 
 app
   .use('/auth', authRoutes)

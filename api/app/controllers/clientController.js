@@ -1,4 +1,5 @@
 const { User, Client } = require('../models');
+
 const controller = {};
 
 controller.createClient = async (req, res) => {
@@ -16,10 +17,9 @@ controller.showClient = async (req, res) => {
   const clientId = req.params.id;
   const client = await Client.findOne({
     attributes: ['id', 'cpf'],
-    include: { model: User, attributes: ['id', 'email'] }
+    include: { model: User, attributes: ['id', 'email'] },
   },
-  { where: { id: clientId } }
-  );
+  { where: { id: clientId } });
   res.status(200).json(client);
 };
 

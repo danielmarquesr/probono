@@ -1,4 +1,4 @@
-'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const Client = sequelize.define('Client', {
     cpf: {
@@ -7,9 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        isNumeric: true
-      }
-    }
+        isNumeric: true,
+      },
+    },
   }, {});
   Client.associate = (models) => {
     Client.belongsTo(models.User, { foreignKey: 'userId' });

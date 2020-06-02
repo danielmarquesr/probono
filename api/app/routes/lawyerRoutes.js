@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const lawyerController = require('../controllers/lawyerController');
 const verifyToken = require('../helpers/auth');
