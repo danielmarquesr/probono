@@ -4,11 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     cna: {
       allowNull: false,
       unique: true,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+        isNumeric: true
+      }
     }
   }, {});
   Lawyer.associate = (models) => {
-    Lawyer.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
+    Lawyer.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Lawyer;
 };

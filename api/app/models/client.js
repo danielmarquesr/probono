@@ -4,11 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     cpf: {
       allowNull: false,
       unique: true,
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+        isNumeric: true
+      }
     }
   }, {});
-  Client.associate = function (models) {
-    Client.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
+  Client.associate = (models) => {
+    Client.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return Client;
 };
