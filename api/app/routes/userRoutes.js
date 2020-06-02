@@ -3,11 +3,15 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const verifyToken = require('../helpers/auth');
 
+const auth = (req, res, next) => {
+  verifyToken(req, res, next, 'user');
+};
+
 router
-  .get('/', verifyToken, userController.indexUser)
+  .get('/', auth, userController.indexUser)
   .post('/', userController.createUser)
-  .get('/:id', verifyToken, userController.showUser)
-  .put('/:id', verifyToken, userController.editUser)
-  .delete('/:id', verifyToken, userController.deleteUser);
+  .get('/:id', auth, userController.showUser)
+  .put('/:id', auth, userController.editUser)
+  .delete('/:id', auth, userController.deleteUser);
 
 module.exports = router;

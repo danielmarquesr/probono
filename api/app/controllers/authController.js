@@ -1,15 +1,20 @@
 const { User } = require('../models');
 const jwt = require('jsonwebtoken');
-
+const bcrypt = require('bcrypt');
 const controller = {};
+
+const verifyPassword = (password, hash) => {
+  return bcrypt.compareSync(password, hash);
+};
 
 controller.login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
-  if (user) {
+  const hash = user.dataValues.password;
+  if (user && verifyPassword(password, hash)) {
     const id = user.dataValues.id;
     const token = jwt.sign({ id }, process.env.SECRET, {
-      expiresIn: 600
+      expiresIn: 18000
     });
     res.status(200).json({ token });
   } else {
@@ -17,12 +22,6 @@ controller.login = async (req, res) => {
       { status: 404, message: 'Wrong email or password !' }
     );
   }
-};
-
-controller.logout = async (req, res) => {
-  const id = req.params.id;
-  const user = await User.findAll({ where: { id } });
-  res.status(200).json(user);
 };
 
 module.exports = controller;

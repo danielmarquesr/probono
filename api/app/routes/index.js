@@ -1,9 +1,14 @@
 const express = require('express');
 const app = express.Router();
-const userRoutes = require('../routes/userRoutes');
 const authRoutes = require('../routes/authRoutes');
+const userRoutes = require('../routes/userRoutes');
+const lawyerRoutes = require('../routes/lawyerRoutes');
+const clientRoutes = require('../routes/clientRoutes');
 
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
+app
+  .use('/auth', authRoutes)
+  .use('/users', userRoutes)
+  .use('/lawyers', lawyerRoutes)
+  .use('/clients', clientRoutes);
 
 module.exports = app;
