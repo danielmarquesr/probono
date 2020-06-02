@@ -1,16 +1,11 @@
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('Lawsuits', {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Progresses', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: Sequelize.INTEGER,
-    },
-    number: {
-      allowNull: false,
-      unique: true,
-      type: Sequelize.STRING,
     },
     title: {
       allowNull: false,
@@ -20,19 +15,15 @@ module.exports = {
       allowNull: false,
       type: Sequelize.TEXT,
     },
-    clientId: {
+    date: {
       allowNull: false,
-      type: Sequelize.INTEGER,
-      references: {
-        model: 'Clients',
-        key: 'id',
-      },
+      type: Sequelize.DATE,
     },
-    lawyerId: {
+    lawsuitId: {
       allowNull: false,
       type: Sequelize.INTEGER,
       references: {
-        model: 'Lawyers',
+        model: 'Lawsuits',
         key: 'id',
       },
     },
@@ -45,5 +36,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: (queryInterface) => queryInterface.dropTable('Lawsuits'),
+  down: (queryInterface) => queryInterface.dropTable('Progresses'),
 };
