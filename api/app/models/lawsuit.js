@@ -26,7 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Lawsuit.associate = (models) => {
-    Lawsuit.belongsToMany(models.Lawyer, { through: 'LawyerLawsuit', foreignKey: 'lawsuitId' });
+    Lawsuit.belongsTo(models.Lawyer, { foreignKey: 'lawyerId' });
+    Lawsuit.belongsTo(models.Client, { foreignKey: 'clientId' });
   };
   return Lawsuit;
 };

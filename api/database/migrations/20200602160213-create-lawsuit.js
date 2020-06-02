@@ -20,6 +20,22 @@ module.exports = {
       allowNull: false,
       type: Sequelize.TEXT,
     },
+    clientId: {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'Clients',
+        key: 'id'
+      }
+    },
+    lawyerId: {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'Lawyers',
+        key: 'id'
+      }
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
