@@ -1,4 +1,5 @@
-'use strict';
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     email: {
@@ -19,8 +20,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   User.associate = (models) => {
-    User.hasOne(models.Lawyer), { as: 'lawyer' };
-    User.hasOne(models.Client, { as: 'client' });
+    User.hasOne(models.Lawyer, { foreignKey: 'userId' });
+    User.hasOne(models.Client, { foreignKey: 'userId' });
   };
+  User.beforeCreate((user, options) => {
+    user.password = bcrypt.hashSync(user.password, 10);
+  });
   return User;
 };

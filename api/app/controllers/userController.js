@@ -17,7 +17,7 @@ controller.createUser = async (req, res) => {
 
 controller.showUser = async (req, res) => {
   const id = req.params.id;
-  const user = await User.findAll({
+  const user = await User.findOne({
     attributes: { exclude: ['createdAt', 'updatedAt', 'password'] },
     where: { id }
   });
