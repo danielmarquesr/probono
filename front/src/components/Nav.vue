@@ -6,14 +6,14 @@
         active-class="link-active"
         class="link link-register"
       >
-        <div class="button">REGISTRAR-SE</div>
+        REGISTRAR-SE
       </router-link>
       <router-link
         to="/login"
         active-class="link-active"
         class="link link-login"
       >
-        <div class="button">LOGIN</div>
+        LOGIN
       </router-link>
     </div>
   </div>
@@ -36,13 +36,13 @@ export default {
     right: 0;
     .link {
       padding: 8px 8px;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: bold;
       text-decoration: none;
       color: gray;
       opacity: 0.7;
       &-active {
-        color: #6500D5;
+        color: #5700D0;
         opacity: 1.0;
       }
     }
