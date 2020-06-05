@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
 };
 
 router
-  .post('/', auth, clientController.createClient)
+  .post('/', clientController.createClient)
   .get('/:id', auth, clientController.showClient);
 
 module.exports = router;
