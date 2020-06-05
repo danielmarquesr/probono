@@ -24,10 +24,11 @@ const verifyRole = async (routeRole, id) => {
 
 const verifyToken = (req, res, next, routeRole) => {
   try {
-    const token = req.headers['x-access-token'];
+    const token = req.headers.authorization;
     const payload = jwt.verify(token, process.env.SECRET);
     if (verifyRole(routeRole, payload.id)) {
       req.userId = payload.id;
+      req.role = payload.role;
       next();
     } else res.status(403).json();
   } catch (error) {
