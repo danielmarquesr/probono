@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const httpClient = axios.create({
-  baseUrl: process.env.VUE_APP_BASE_URL,
+  baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json'

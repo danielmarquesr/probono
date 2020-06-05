@@ -1,16 +1,18 @@
 import httpClient from '@/api/httpClient';
 
-const login = async (body) => {
-  const endpoint = '/login';
-  httpClient.post(endpoint, body)
-    .then(res => {
-      localStorage.token = res.data.token;
-    });
+const loginClient = async (body) => {
+  const endpoint = '/auth/login/client';
+  return httpClient.post(endpoint, body);
+};
+
+const loginLawyer = async (body) => {
+  const endpoint = '/auth/login/lawyer';
+  return httpClient.post(endpoint, body);
 };
 
 const registerClient = async (body) => {
   const endpoint = '/clients';
-  httpClient.post(endpoint, body)
+  return httpClient.post(endpoint, body)
     .then(res => {
 
     });
@@ -18,14 +20,15 @@ const registerClient = async (body) => {
 
 const registerLawyer = async (body) => {
   const endpoint = '/lawyers';
-  httpClient.post(endpoint, body)
+  return httpClient.post(endpoint, body)
     .then(res => {
 
     });
 };
 
 export default {
-  login,
+  loginClient,
+  loginLawyer,
   registerClient,
   registerLawyer
 };
