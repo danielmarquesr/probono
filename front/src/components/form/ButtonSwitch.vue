@@ -1,27 +1,43 @@
 <template>
   <div class="nav">
     <div class="nav-div">
-      <router-link
-        to="/registrar"
-        active-class="link-active"
+      <div
+        :class="getType() === 'client' ? 'link-active link-active-client': ''"
         class="link link-register"
+        v-on:click="setType('client')"
       >
-        <div class="button">REGISTRAR</div>
-      </router-link>
-      <router-link
-        to="/login"
-        active-class="link-active"
+        CLIENTE
+      </div>
+      <div
+        :class="getType() === 'lawyer' ? 'link-active link-active-lawyer': ''"
         class="link link-login"
+        v-on:click="setType('lawyer')"
       >
-        <div class="button">LOGIN</div>
-      </router-link>
+        ADVOGADO
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ButtonSwitch'
+  name: 'ButtonSwitch',
+  data() {
+    return {
+      type: 'client'
+    }
+  },
+  methods: {
+    setType(type) {
+      if(type === 'client' && this.$route.query.type !== 'client')
+        this.$router.push({ query: { type: 'client' }});
+      else if(type === 'lawyer' && this.$route.query.type !== 'lawyer')
+        this.$router.push({ query: { type: 'lawyer' }});
+    },
+    getType() {
+      return this.$route.query.type;
+    }
+  }
 };
 </script>
 
@@ -31,34 +47,40 @@ export default {
   justify-content: center;
   position: relative;
   width: 100%;
+  margin: 20px 0;
   &-div {
     display: flex;
     align-items: center;
     .link {
-      // margin-right: 0.5px;
-      padding: 8px 12px;
+      width: 120px;
+      padding: 12px 0;
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      // color: gray;
-      // border-bottom: 3px solid gray;
+      text-align: center;
       color: white;
       background: gray;
       opacity: 0.4;
+      cursor: pointer;
       &-register {
-        border-radius: 10px 0px 0px 10px;
+        border-radius: 5px 0px 0px 5px;
       }
       &-login {
-        border-radius: 0px 10px 10px 0px;
+        border-radius: 0px 5px 5px 0px;
       }
       &-active {
-        background: #6500D5;
         opacity: 1.0;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+        cursor: default;
+        &-client {
+          // background: #00BFE2;
+          background: #6500D5;
+        }
+        &-lawyer {
+          // background: #00BFE2;
+          background: #6500D5;
+        }
       }
-    }
-    .button {
-
     }
   }
 }
