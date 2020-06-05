@@ -5,6 +5,13 @@
       <div class="card-image" />
       <div class="body">
         <Nav />
+        <div class="login-body">
+          <h1>Login</h1>
+          Deseja
+          {{ this.$route.path === '/login' ? 'fazer login' : 'se registrar' }}
+          como:
+        </div>
+        <ButtonSwitch />
         <slot />
       </div>
     </div>
@@ -12,12 +19,14 @@
 </template>
 
 <script>
-import Nav from '@/components/Nav'
+import Nav from '@/components/Nav';
+import ButtonSwitch from '@/components/form/ButtonSwitch';
 
 export default {
   name: 'Background',
   components: {
-    Nav
+    Nav,
+    ButtonSwitch
   }
 };
 </script>
@@ -35,10 +44,10 @@ export default {
     display: flex;
     position: relative;
     background: white;
-    width: 600px;
+    width: 550px;
     height: 400px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 7px;
+    border-radius: 6px;
 
     .logo {
       position: absolute;
@@ -59,15 +68,21 @@ export default {
       box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
       height: 100%;
       width: 350px;
-      border-radius: 7px;
+      border-radius: 6px;
     }
 
     .body {
       width: 100%;
       padding: 10px;
 
-      .nav {
+      .login-body {
+        padding: 0 10px;
 
+        h1 {
+          color: #5700D0;
+          margin-top: 8px;
+          margin-bottom: 20px;
+        }
       }
     }
   }
