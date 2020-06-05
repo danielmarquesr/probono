@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Lawyer.associate = (models) => {
     Lawyer.belongsTo(models.User, { foreignKey: 'userId' });
     Lawyer.hasMany(models.Lawsuit, { foreignKey: 'lawyerId' });
+    Lawyer.hasMany(models.Translation, { foreignKey: 'lawyerId' });
   };
   return Lawyer;
 };
