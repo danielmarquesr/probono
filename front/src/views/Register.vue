@@ -13,6 +13,15 @@ export default {
   name: 'Register',
   components: {
     Background
+  },
+  data() {
+    return {
+
+    }
+  },
+  created() {
+    if(!this.$route.query.type)
+      this.$router.push({ query: { type: 'client' }});
   }
 }
 </script>
