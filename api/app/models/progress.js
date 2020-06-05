@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       },
     },
-    text: {
+    description: {
       allowNull: false,
       type: DataTypes.TEXT,
       validate: {
@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Progress.associate = (models) => {
     Progress.belongsTo(models.Lawsuit, { foreignKey: 'lawsuitId' });
+    Progress.belongsToMany(models.Translation, { through: 'TranslationProgress', foreignKey: 'progressId' });
   };
   return Progress;
 };
