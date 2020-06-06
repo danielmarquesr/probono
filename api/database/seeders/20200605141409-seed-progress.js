@@ -2,14 +2,14 @@ const description1 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 const description2 = 'Neque viverra justo nec ultrices dui. Morbi tincidunt augue interdum velit euismod in pellentesque massa. Quisque egestas diam in arcu cursus euismod quis viverra nibh. Adipiscing elit ut aliquam purus. Quis blandit turpis cursus in hac.';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('Progresses', [
+  up: (queryInterface) => queryInterface.bulkInsert('Progresses', [
     {
       title: 'Andamento 01',
       description: description1,
       date: new Date('2019-05-01'),
       lawsuitId: 1,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     },
     {
       title: 'Andamento 02',
@@ -17,7 +17,7 @@ module.exports = {
       date: new Date('2019-07-05'),
       lawsuitId: 1,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     },
     {
       title: 'Andamento 03',
@@ -25,7 +25,7 @@ module.exports = {
       date: new Date('2019-09-10'),
       lawsuitId: 1,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     },
     {
       title: 'Andamento 04',
@@ -33,9 +33,9 @@ module.exports = {
       date: new Date('2019-09-30'),
       lawsuitId: 1,
       createdAt: new Date(),
-      updatedAt: new Date()
-    }
+      updatedAt: new Date(),
+    },
   ], {}),
 
-  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Progresses', null, {})
+  down: (queryInterface) => queryInterface.bulkDelete('Progresses', null, {}),
 };

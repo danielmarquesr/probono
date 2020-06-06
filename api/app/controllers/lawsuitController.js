@@ -1,4 +1,5 @@
 const { Client, Lawyer, Lawsuit } = require('../models');
+
 const controller = {};
 
 controller.indexLawsuitOfLawyer = async (req, res) => {
@@ -6,7 +7,7 @@ controller.indexLawsuitOfLawyer = async (req, res) => {
   const lawyer = await Lawyer.findOne({ where: { userId } });
   const lawyerId = lawyer.dataValues.id;
   const lawsuits = await Lawsuit.findAll({
-    where: { lawyerId }, include: { model: Client }
+    where: { lawyerId }, include: { model: Client },
   });
   res.status(200).json(lawsuits);
 };

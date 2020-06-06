@@ -1,6 +1,4 @@
 const express = require('express');
-
-const app = express.Router();
 const authRoutes = require('./authRoutes');
 const userRoutes = require('./userRoutes');
 const lawyerRoutes = require('./lawyerRoutes');
@@ -8,7 +6,9 @@ const clientRoutes = require('./clientRoutes');
 const lawsuitRoutes = require('./lawsuitRoutes');
 const progressRoutes = require('./progressRoutes');
 
-app
+const router = express.Router();
+
+router
   .use('/auth', authRoutes)
   .use('/users', userRoutes)
   .use('/lawyers', lawyerRoutes)
@@ -16,4 +16,4 @@ app
   .use('/lawsuits', lawsuitRoutes)
   .use('/progresses', progressRoutes);
 
-module.exports = app;
+module.exports = router;

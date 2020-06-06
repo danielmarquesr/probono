@@ -1,4 +1,5 @@
 const { Translation, Progress } = require('../models');
+
 const controller = {};
 
 controller.indexProgressOfLawsuit = async (req, res) => {
@@ -17,8 +18,8 @@ controller.showProgressTranslation = async (req, res) => {
       include: {
         model: Translation,
         attributes,
-      }
-    }
+      },
+    },
   );
   res.status(200).json(progressTranslation);
 };

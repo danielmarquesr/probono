@@ -1,12 +1,12 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('Lawyers', [
+  up: (queryInterface) => queryInterface.bulkInsert('Lawyers', [
     {
       cna: '0001',
       userId: 1,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     },
   ], {}),
 
-  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('Lawyers', null, {})
+  down: (queryInterface) => queryInterface.bulkDelete('Lawyers', null, {}),
 };

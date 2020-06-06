@@ -6,8 +6,8 @@ module.exports = {
       type: Sequelize.INTEGER,
       references: {
         model: 'Translations',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     progressId: {
       allowNull: false,
@@ -15,26 +15,26 @@ module.exports = {
       type: Sequelize.INTEGER,
       references: {
         model: 'Progresses',
-        key: 'id'
-      }
+        key: 'id',
+      },
     },
     createdAt: {
       allowNull: false,
-      type: Sequelize.DATE
+      type: Sequelize.DATE,
     },
     updatedAt: {
       allowNull: false,
-      type: Sequelize.DATE
-    }
+      type: Sequelize.DATE,
+    },
   },
   {
     uniqueKeys: {
       unique_tag: {
         customIndex: true,
-        fields: ['translationId', 'progressId']
-      }
-    }
+        fields: ['translationId', 'progressId'],
+      },
+    },
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('TranslationProgress')
+  down: (queryInterface) => queryInterface.dropTable('TranslationProgress'),
 };

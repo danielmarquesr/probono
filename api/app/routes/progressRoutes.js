@@ -1,9 +1,15 @@
 const express = require('express');
-const router = express.Router();
 const progressController = require('../controllers/progressController');
+const verifyToken = require('../helpers/auth');
+
+const router = express.Router();
+
+const auth = (req, res, next) => {
+  verifyToken(req, res, next, 'user');
+};
 
 router
-  .get('/lawsuit/:id', progressController.indexProgressOfLawsuit)
-  .get('/:id/translation', progressController.showProgressTranslation);
+  .get('/lawsuit/:id', auth, progressController.indexProgressOfLawsuit)
+  .get('/:id/translation', auth, progressController.showProgressTranslation);
 
 module.exports = router;
