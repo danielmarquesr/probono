@@ -1,6 +1,6 @@
 FROM node:13-alpine
 
-EXPOSE 8080
+EXPOSE 3000
 
 RUN mkdir /code
 

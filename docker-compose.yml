@@ -14,8 +14,13 @@ services:
     build: .
     command: ["sh", "run.sh"]
     ports:
-    - '3000:8080'
+    - '3000:3000'
     volumes:
     - ./api:/code
+    environment:
+    - NODE_ENV=development
+    - NODE_PATH=.
+    - PORT=3000
+    - SECRET=my-secret-key-api
     depends_on:
     - db
