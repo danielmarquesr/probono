@@ -12,18 +12,12 @@ const loginLawyer = async (body) => {
 
 const registerClient = async (body) => {
   const endpoint = '/clients';
-  return httpClient.post(endpoint, body)
-    .then(res => {
-
-    });
+  return httpClient.post(endpoint, body);
 };
 
 const registerLawyer = async (body) => {
   const endpoint = '/lawyers';
-  return httpClient.post(endpoint, body)
-    .then(res => {
-
-    });
+  return httpClient.post(endpoint, body);
 };
 
 export default {
