@@ -7,7 +7,8 @@ import Lawsuit from '@/views/Lawsuit';
 import Client from '@/views/Client';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
-import Progress from '@/views/Progress';
+import IndexProgress from '@/views/IndexProgress';
+import ShowProgress from '@/views/ShowProgress';
 
 Vue.use(VueRouter);
 
@@ -31,8 +32,13 @@ const routes = [
       },
       {
         path: 'processos/:lawsuitId/andamentos',
-        name: 'Progress',
-        component: Progress
+        name: 'IndexProgress',
+        component: IndexProgress
+      },
+      {
+        path: 'processos/:lawsuitId/andamentos/:progressId',
+        name: 'ShowProgress',
+        component: ShowProgress
       }
     ]
   },

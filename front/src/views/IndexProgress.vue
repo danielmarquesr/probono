@@ -4,6 +4,7 @@
       class="progress-card"
       v-for="progress in progresses"
       :key="progress.id"
+      v-on:click="() => redirectToProgressShow(progress.id)"
     >
       <b>id:</b> {{ progress.id }}
       <br />
@@ -19,7 +20,7 @@
 import progressAPI from '@/api/progress';
 
 export default {
-  name: 'Progress',
+  name: 'IndexProgress',
   data() {
     return {
       progresses: []
@@ -32,8 +33,13 @@ export default {
         this.progresses = res.data;
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
+  },
+  methods: {
+    redirectToProgressShow(progressId) {
+      this.$router.push({ name: 'ShowProgress', params: { progressId } });
+    }
   }
 }
 </script>

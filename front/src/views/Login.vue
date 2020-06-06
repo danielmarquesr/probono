@@ -79,7 +79,7 @@ export default {
             this.$router.push({ path: '/processos' });
           })
           .catch(error => {
-            console.log(error);
+            console.error(error);
           });
       }
       else if(this.$route.query.type === 'lawyer') {
@@ -90,7 +90,7 @@ export default {
             this.$router.push({ path: '/processos' });
           })
           .catch(error => {
-            console.log(error);
+            console.error(error);
           });
       }
     }
