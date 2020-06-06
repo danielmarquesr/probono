@@ -5,4 +5,9 @@ const indexProgressOfLawsuit = (lawsuitId) => {
   return httpClient.get(endpoint);
 };
 
-export default { indexProgressOfLawsuit };
+const showProgress = (progressId) => {
+  const endpoint = `/progresses/${progressId}/translation`;
+  return httpClient.get(endpoint);
+};
+
+export default { indexProgressOfLawsuit, showProgress };
