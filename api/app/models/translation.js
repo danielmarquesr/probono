@@ -17,7 +17,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Translation.associate = function (models) {
     Translation.belongsTo(models.Lawyer, { foreignKey: 'lawyerId' });
-    Translation.belongsToMany(models.Progress, { through: 'TranslationProgress', foreignKey: 'translationId' });
+    Translation.belongsToMany(models.Progress, {
+      through: 'TranslationProgress', foreignKey: 'translationId' 
+    });
   };
   return Translation;
 };
