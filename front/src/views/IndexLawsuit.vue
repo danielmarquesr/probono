@@ -22,7 +22,7 @@
 import lawsuitAPI from '@/api/lawsuit';
 
 export default {
-  name: 'Lawsuit',
+  name: 'IndexLawsuit',
   data() {
     return {
       lawsuits: []

@@ -3,8 +3,8 @@ import VueRouter from 'vue-router';
 
 // VIEWS
 import Home from '@/views/Home';
-import Lawsuit from '@/views/Lawsuit';
-import Client from '@/views/Client';
+import Translation from '@/views/Translation';
+import IndexLawsuit from '@/views/IndexLawsuit';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
 import IndexProgress from '@/views/IndexProgress';
@@ -19,16 +19,14 @@ const routes = [
     component: Home,
     children: [
       {
+        path: 'regras-traducao',
+        name: 'Translation',
+        component: Translation,
+      },
+      {
         path: 'processos',
-        name: 'Lawsuit',
-        component: Lawsuit,
-        // children: [
-        //   {
-        //     path: ':lawsuitId/andamentos',
-        //     name: 'Progress',
-        //     component: Progress
-        //   }
-        // ]
+        name: 'IndexLawsuit',
+        component: IndexLawsuit,
       },
       {
         path: 'processos/:lawsuitId/andamentos',
