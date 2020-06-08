@@ -1,7 +1,7 @@
 module.exports = {
   up: (queryInterface) => queryInterface.bulkInsert('Clients', [
     {
-      cpf: '04082814132',
+      cpf: '12345678910',
       userId: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
