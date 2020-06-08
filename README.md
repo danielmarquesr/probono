@@ -1,1 +1,5 @@
-# probono-front
+# probono
+
+* Run project:
+
+    $ docker-compose up
