@@ -6,7 +6,7 @@ const controller = {};
 
 const verifyPassword = (password, hash) => bcrypt.compareSync(password, hash);
 
-const sendNotFount = (res) => {
+const sendNotFound = (res) => {
   res.status(404).json(
     { status: 404, message: 'Wrong email or password !' },
   ).end();
@@ -15,24 +15,28 @@ const sendNotFount = (res) => {
 controller.loginLawyer = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email } });
-  const hash = user.dataValues.password;
-  if (user && verifyPassword(password, hash)) {
-    const { id } = user.dataValues;
-    const role = 'lawyer';
-    const token = jwt.sign({ id, role }, process.env.SECRET, {
-      expiresIn: 18000,
-    });
-    res.status(200).json({ token, role });
-  } else {
-    res.status(404).json(
-      { status: 404, message: 'Wrong email or password !' },
-    );
-  }
+  if (user) {
+    const hash = user.dataValues.password;
+    if (user && verifyPassword(password, hash)) {
+      const { id } = user.dataValues;
+      const role = 'lawyer';
+      const token = jwt.sign({ id, role }, process.env.SECRET, {
+        expiresIn: 18000,
+      });
+      res.status(200).json({ token, role });
+    } else {
+      res.status(404).json(
+        { status: 404, message: 'Wrong email or password !' },
+      );
+    }
+  } else sendNotFound(res);
 };
 
 controller.loginClient = async (req, res) => {
   const { cpf, password } = req.body;
-  const userClient = await Client.findOne({ where: { cpf }, include: { model: User } });
+  const userClient = await Client.findOne(
+    { where: { cpf }, include: { model: User } },
+  );
   if (userClient) {
     const hash = userClient.dataValues.User.dataValues.password;
     if (verifyPassword(password, hash)) {
@@ -42,8 +46,12 @@ controller.loginClient = async (req, res) => {
         expiresIn: 18000,
       });
       res.status(200).json({ token, role });
-    } else sendNotFount(res);
-  } else sendNotFount(res);
+    } else {
+      res.status(404).json(
+        { status: 404, message: 'Wrong email or password !' },
+      );
+    }
+  } else sendNotFound(res);
 };
 
 module.exports = controller;

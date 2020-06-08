@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const { User, Lawyer } = require('../models');
 
 const controller = {};
@@ -5,9 +6,14 @@ const controller = {};
 controller.createLawyer = async (req, res) => {
   try {
     const { cna, email, password } = req.body;
-    let lawyer = { email, password, Lawyer: { cna } };
-    lawyer = await User.create(lawyer, { include: Lawyer });
-    res.status(201).json(lawyer);
+    const lawyer = { email, password, Lawyer: { cna } };
+    const userLawyer = await User.create(lawyer, { include: Lawyer });
+    const role = 'lawyer';
+    const { id } = userLawyer.dataValues;
+    const token = jwt.sign({ id, role }, process.env.SECRET, {
+      expiresIn: 18000,
+    });
+    res.status(200).json({ token, role });
   } catch (error) {
     res.status(500).json({ error });
   }

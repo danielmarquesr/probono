@@ -5,13 +5,11 @@ const getUserRole = async (id) => {
   const clientUser = await User.findOne(
     { include: Client }, { where: { id } },
   );
-  if (clientUser.dataValues.Client !== undefined)
-    return 'client'
+  if (clientUser.dataValues.Client !== undefined) return 'client';
   const lawyerUser = await User.findOne(
     { include: Lawyer }, { where: { id } },
   );
-  if (lawyerUser.dataValues.Lawyer !== undefined)
-    return 'lawyer'
+  if (lawyerUser.dataValues.Lawyer !== undefined) return 'lawyer';
 };
 
 const verifyRole = async (routeRole, id) => {

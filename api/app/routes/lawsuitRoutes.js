@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
 };
 
 router
-  .post('/lawyer', auth, lawsuitController.indexLawsuit)
+  .post('/lawyer', auth, lawsuitController.indexLawsuitOfLawyer)
   .post('/client', auth, lawsuitController.indexLawsuitOfClient);
 
 module.exports = router;
