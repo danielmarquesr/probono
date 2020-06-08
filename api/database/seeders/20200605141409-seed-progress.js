@@ -4,7 +4,6 @@ const description2 = 'Neque viverra justo nec ultrices dui. Morbi tincidunt augu
 module.exports = {
   up: (queryInterface) => queryInterface.bulkInsert('Progresses', [
     {
-      title: 'Andamento 01',
       description: description1,
       date: new Date('2019-05-01'),
       lawsuitId: 1,
@@ -12,7 +11,6 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      title: 'Andamento 02',
       description: description1,
       date: new Date('2019-07-05'),
       lawsuitId: 1,
@@ -20,7 +18,6 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      title: 'Andamento 03',
       description: description2,
       date: new Date('2019-09-10'),
       lawsuitId: 1,
@@ -28,7 +25,6 @@ module.exports = {
       updatedAt: new Date(),
     },
     {
-      title: 'Andamento 04',
       description: description2,
       date: new Date('2019-09-30'),
       lawsuitId: 1,

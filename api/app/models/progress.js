@@ -1,13 +1,6 @@
 
 module.exports = (sequelize, DataTypes) => {
   const Progress = sequelize.define('Progress', {
-    title: {
-      allowNull: false,
-      type: DataTypes.STRING,
-      validate: {
-        notEmpty: true,
-      },
-    },
     description: {
       allowNull: false,
       type: DataTypes.TEXT,
