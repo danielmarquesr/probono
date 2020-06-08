@@ -1,6 +1,27 @@
 const { Translation, Progress } = require('../models');
+const lawyerHelper = require('../helpers/lawyer');
 
 const controller = {};
+
+controller.createProgress = async (req, res) => {
+  const { date, description, lawsuitId } = req.body;
+
+  const lawyerId = await lawyerHelper.getLawyerId(req);
+  const translations = await Translation.findAll({ where: { lawyerId } });
+
+  const progress = await Progress.create({ date, description, lawsuitId });
+
+  let textTarget = ''
+  for(translation of translations) {
+    textTarget = await translation.dataValues.textTarget;
+    if(await description.includes(textTarget)) {
+      console.log('\n\nachou achou achou\n\n');
+      await progress.addTranslation(translation);
+    }
+  }
+
+  res.status(201).json(progress);
+};
 
 controller.indexProgressOfLawsuit = async (req, res) => {
   const lawsuitId = req.params.id;
@@ -15,10 +36,7 @@ controller.showProgressTranslation = async (req, res) => {
     {
       where: { id },
       attributes,
-      include: {
-        model: Translation,
-        attributes,
-      },
+      include: { model: Translation, attributes },
     },
   );
   res.status(200).json(progressTranslation);

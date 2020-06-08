@@ -9,6 +9,7 @@ const auth = (req, res, next) => {
 };
 
 router
+  .post('/', auth, progressController.createProgress)
   .get('/lawsuit/:id', auth, progressController.indexProgressOfLawsuit)
   .get('/:id/translation', auth, progressController.showProgressTranslation);
 
