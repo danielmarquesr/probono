@@ -5,6 +5,7 @@ const lawyerRoutes = require('./lawyerRoutes');
 const clientRoutes = require('./clientRoutes');
 const lawsuitRoutes = require('./lawsuitRoutes');
 const progressRoutes = require('./progressRoutes');
+const translationRoutes = require('./translationRoutes');
 
 const router = express.Router();
 
@@ -14,6 +15,7 @@ router
   .use('/lawyers', lawyerRoutes)
   .use('/clients', clientRoutes)
   .use('/lawsuits', lawsuitRoutes)
-  .use('/progresses', progressRoutes);
+  .use('/progresses', progressRoutes)
+  .use('/translations', translationRoutes);
 
 module.exports = router;
