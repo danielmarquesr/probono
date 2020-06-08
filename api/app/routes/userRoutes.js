@@ -9,6 +9,7 @@ const auth = (req, res, next) => {
 };
 
 router
+  .get('/user-info', auth, userController.getUserInfo)
   .get('/', auth, userController.indexUser)
   .post('/', userController.createUser)
   .get('/:id', auth, userController.showUser)
