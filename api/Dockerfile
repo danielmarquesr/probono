@@ -6,8 +6,8 @@ RUN mkdir /code
 
 WORKDIR /code
 
-ADD api /code
+ADD . /code
 
-RUN npm install
+# RUN npm install
 
 CMD ["npx", "nodemon", "server"]

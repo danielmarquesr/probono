@@ -3,8 +3,9 @@ version: '3.8'
 services:
   front:
     build: .
-    command: npm run serve
+    image: probono-front
+    command: sh run.sh
     ports:
-    - '8000:8080'
+    - '8080:8080'
     volumes:
-    - ./front:/code
+    - .:/code

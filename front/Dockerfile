@@ -6,12 +6,8 @@ RUN mkdir /code
 
 WORKDIR /code
 
-ADD front/package.json /code
+ADD . /code
 
-ADD front/ /code
+# RUN npm install
 
-RUN apk update && apk add yarn
-
-RUN yarn install
-
-CMD ['yarn', 'server']
+CMD ['npm', 'run', 'server']

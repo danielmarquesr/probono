@@ -12,11 +12,12 @@ services:
 
   web:
     build: .
+    image: probono-api
     command: ["sh", "run.sh"]
     ports:
     - '3000:3000'
     volumes:
-    - ./api:/code
+    - .:/code
     environment:
     - NODE_ENV=development
     - NODE_PATH=.
