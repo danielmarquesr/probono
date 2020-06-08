@@ -1,11 +1,11 @@
 const express = require('express');
 const lawyerController = require('../controllers/lawyerController');
-const verifyToken = require('../helpers/auth');
+const authHelper = require('../helpers/auth');
 
 const router = express.Router();
 
 const auth = (req, res, next) => {
-  verifyToken(req, res, next, 'lawyer');
+  authHelper.verifyToken(req, res, next, 'lawyer');
 };
 
 router

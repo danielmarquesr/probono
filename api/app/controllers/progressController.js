@@ -15,7 +15,6 @@ controller.createProgress = async (req, res) => {
   for(translation of translations) {
     textTarget = await translation.dataValues.textTarget;
     if(await description.includes(textTarget)) {
-      console.log('\n\nachou achou achou\n\n');
       await progress.addTranslation(translation);
     }
   }

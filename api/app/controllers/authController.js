@@ -18,7 +18,7 @@ controller.loginLawyer = async (req, res) => {
   const hash = user.dataValues.password;
   if (user && verifyPassword(password, hash)) {
     const { id } = user.dataValues;
-    const role = 'laywer';
+    const role = 'lawyer';
     const token = jwt.sign({ id, role }, process.env.SECRET, {
       expiresIn: 18000,
     });
