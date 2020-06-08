@@ -22,7 +22,7 @@ controller.loginLawyer = async (req, res) => {
     const token = jwt.sign({ id, role }, process.env.SECRET, {
       expiresIn: 18000,
     });
-    res.status(200).json({ token });
+    res.status(200).json({ token, role });
   } else {
     res.status(404).json(
       { status: 404, message: 'Wrong email or password !' },
@@ -41,7 +41,7 @@ controller.loginClient = async (req, res) => {
       const token = jwt.sign({ id, role }, process.env.SECRET, {
         expiresIn: 18000,
       });
-      res.status(200).json({ token });
+      res.status(200).json({ token, role });
     } else sendNotFount(res);
   } else sendNotFount(res);
 };

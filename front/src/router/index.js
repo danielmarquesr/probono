@@ -87,30 +87,27 @@ const router = new VueRouter({
   routes
 });
 
-const verifyRole = async (userRole) => {
-  let user = {};
-  userAPI.getUserInfo()
-    .then(async res => {
-      user = await res.data;
-      return user && user.role === userRole
-    })
-    .catch(() => {
-      return false;
-    });
-};
-
-router.beforeEach(async (to, from, next) => {
+router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (localStorage.getItem('token') == null) {
       next({
-        path: '/login',
-        params: { nextUrl: to.fullPath }
+        name: 'Login',
       })
     } else {
       if (to.matched.some(record => record.meta.isLawyer)) {
-        await verifyRole('lawyer') ? next() : next({ path: '/processos' });
+        if(localStorage.getItem('role') == 'lawyer') {
+          next()
+        }
+        else {
+          next({ name: 'IndexLawsuit' });
+        }
       } else if (to.matched.some(record => record.meta.isClient)) {
-        await verifyRole('client') ? next() : next({ path: '/processos' });
+        if(localStorage.getItem('role') == 'client') {
+          next()
+        }
+        else {
+          next({ name: 'IndexLawsuit' });
+        }
       } else { next() }
     }
   } else { next() }

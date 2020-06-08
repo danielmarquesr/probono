@@ -76,6 +76,7 @@ export default {
         authAPI.loginClient(body)
           .then(async res => {
             localStorage.token = await res.data.token;
+            localStorage.role = await res.data.role;
             this.$router.push({ path: '/processos' });
           })
           .catch(error => {
@@ -87,6 +88,7 @@ export default {
         authAPI.loginLawyer(body)
           .then(async res => {
             localStorage.token = await res.data.token;
+            localStorage.role = await res.data.role;
             this.$router.push({ path: '/processos' });
           })
           .catch(error => {
