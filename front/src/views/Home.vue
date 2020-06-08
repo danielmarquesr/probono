@@ -1,14 +1,32 @@
 <template>
   <div class="home">
     <div class="home-body">
+      <ButtonField
+        :background="'gray'"
+        width="90px"
+        :click="removeToken"
+      >
+        Sair
+      </ButtonField>
       <router-view />
     </div>
   </div>
 </template>
 
 <script>
+import ButtonField from '@/components/form/ButtonField';
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: {
+    ButtonField
+  },
+  methods: {
+    removeToken() {
+      localStorage.removeItem('token');
+      this.$router.push({ name: 'Login' });
+    }
+  }
 }
 </script>
 
