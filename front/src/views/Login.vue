@@ -63,7 +63,7 @@ export default {
       password: ''
     };
   },
-  created() {
+  mounted() {
     if(!this.$route.query.type)
       this.$router.push({ query: { type: 'client' }});
   },

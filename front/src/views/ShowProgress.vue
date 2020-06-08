@@ -34,7 +34,7 @@ export default {
       progress: {}
     }
   },
-  created() {
+  mounted() {
     const { progressId } = this.$route.params;
     progressAPI.showProgress(progressId)
       .then(res => {

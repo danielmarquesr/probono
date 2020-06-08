@@ -1,6 +1,9 @@
 <template>
   <div class="lawsuit">
-    <router-link to="/regras-traducao">
+    <router-link
+      v-if="userInfo.role === 'lawyer'"
+      to="/regras-traducao"
+    >
       REGRAS DE TRADUÇÃO
     </router-link>
     <br /><br />
@@ -12,9 +15,7 @@
     >
       <b>id:</b> {{ lawsuit.id }}
       <br />
-      <b>title:</b> {{ lawsuit.title }}
-      <br />
-      <b>cpf:</b> {{ lawsuit.Client.cpf }}
+      <b>number:</b> {{ lawsuit.number }}
       <br />
       <b>description:</b> {{ lawsuit.description }}
       <br /><br />
@@ -23,19 +24,26 @@
 </template>
 
 <script>
+import userAPI from '@/api/user';
 import lawsuitAPI from '@/api/lawsuit';
 
 export default {
   name: 'IndexLawsuit',
   data() {
     return {
+      userInfo: {},
       lawsuits: []
     };
   },
-  created() {
-    lawsuitAPI.indexLawsuitOfLawyer({}).then(async res => {
-      this.lawsuits = await res.data;
-    });
+  mounted() {
+    userAPI.getUserInfo()
+      .then(async res => {
+        this.userInfo = await res.data;
+      });
+    lawsuitAPI.indexLawsuit({})
+      .then(async res => {
+        this.lawsuits = await res.data;
+      });
   },
   methods: {
     redirectToProgressIndex(lawsuitId) {

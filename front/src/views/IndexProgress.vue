@@ -1,6 +1,7 @@
 <template>
   <div class="progress">
     <ButtonField
+      v-if="userInfo.role === 'lawyer'"
       :width="'200px'"
       :click="() => {showModal = true}"
     >
@@ -32,6 +33,7 @@
 import ProgressModal from '@/components/ProgressModal';
 import ButtonField from '@/components/form/ButtonField';
 import progressAPI from '@/api/progress';
+import userAPI from '@/api/user';
 
 export default {
   name: 'IndexProgress',
@@ -41,14 +43,22 @@ export default {
   },
   data() {
     return {
+      userInfo: {},
       showModal: false,
       progresses: []
     }
   },
-  created() {
+  mounted() {
+    this.getUserInfo()
     this.indexProgress();
   },
   methods: {
+    getUserInfo() {
+      userAPI.getUserInfo()
+      .then(async res => {
+        this.userInfo = await res.data;
+      });
+    },
     indexProgress() {
       const { lawsuitId } = this.$route.params;
       progressAPI.indexProgressOfLawsuit(lawsuitId)

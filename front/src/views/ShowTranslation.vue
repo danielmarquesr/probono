@@ -31,7 +31,7 @@ export default {
       translation: []
     }
   },
-  created() {
+  mounted() {
     const { translationId } = this.$route.params;
     translationAPI.showTranslationProcess(translationId)
       .then(res => {

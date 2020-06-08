@@ -5,12 +5,12 @@ const indexLawsuitOfClient = async (body) => {
   return httpClient.post(endpoint, body);
 };
 
-const indexLawsuitOfLawyer = async (body) => {
+const indexLawsuit = async (body) => {
   const endpoint = '/lawsuits/lawyer';
   return httpClient.post(endpoint, body);
 };
 
 export default {
   indexLawsuitOfClient,
-  indexLawsuitOfLawyer
+  indexLawsuit
 };
