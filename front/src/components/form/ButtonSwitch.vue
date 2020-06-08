@@ -46,9 +46,8 @@ export default {
   display: flex;
   justify-content: center;
   position: relative;
-  width: 93.5%;
+  width: 100%;
   margin: 20px 0;
-  padding: 0 10px;
   &-div {
     display: flex;
     align-items: center;

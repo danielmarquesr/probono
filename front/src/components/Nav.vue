@@ -7,7 +7,7 @@
         class="link link-register"
       >
         REGISTRAR-SE
-      </router-link>
+      </router-link> 
       <router-link
         to="/login"
         active-class="link-active"
@@ -27,16 +27,10 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
-  display: flex;
-  position: relative;
   height: 35px;
   &-div {
-    display: flex;
-    position: absolute;
-    right: 0;
     .link {
       padding: 8px 8px;
-      font-size: 16px;
       font-weight: bold;
       text-decoration: none;
       color: gray;

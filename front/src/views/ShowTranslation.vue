@@ -10,8 +10,6 @@
       >
         id: {{ progress.id }}
         <br />
-        title: {{ progress.title }}
-        <br />
         date: {{ progress.date }}
         <br />
         description: {{ progress.description }}

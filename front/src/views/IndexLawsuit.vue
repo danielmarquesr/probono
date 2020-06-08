@@ -39,10 +39,17 @@ export default {
     userAPI.getUserInfo()
       .then(async res => {
         this.userInfo = await res.data;
-      });
-    lawsuitAPI.indexLawsuit({})
-      .then(async res => {
-        this.lawsuits = await res.data;
+        if(res.data.role === 'lawyer') {
+          await lawsuitAPI.indexLawsuitOfLawyer()
+            .then(async res => {
+              this.lawsuits = await res.data;
+            });
+        } else if(res.data.role === 'client') {
+          await lawsuitAPI.indexLawsuitOfClient()
+            .then(async res => {
+              this.lawsuits = await res.data;
+            });
+        }
       });
   },
   methods: {

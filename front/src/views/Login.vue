@@ -1,7 +1,20 @@
 <template>
   <Background>
     <div class="login">
+      <router-link
+        to="/registrar"
+        class="link-login"
+      >
+        Deseja criar uma conta?
+      </router-link>
+
+      <h1>Login</h1>
+
       <form class="form">
+        Perfil da conta:
+
+        <ButtonSwitch />
+
         <InputField
           v-show="this.$route.query.type === 'lawyer'"
           v-model="email"
@@ -10,6 +23,7 @@
         >
           <FontAwesomeIcon :icon="['fas', 'envelope']" />
         </InputField>
+
         <InputField
           v-show="this.$route.query.type === 'client'"
           v-model="cpf"
@@ -18,6 +32,7 @@
         >
           <FontAwesomeIcon :icon="['fas', 'address-card']" />
         </InputField>
+
         <InputField
           v-model="password"
           :type="'password'"
@@ -26,6 +41,7 @@
         >
           <FontAwesomeIcon :icon="['fas', 'lock']" />
         </InputField>
+
         <ButtonField class="button-form" :click="login">
           ENTRAR
         </ButtonField>
@@ -38,6 +54,7 @@
 import Background from '@/components/Background';
 import InputField from '@/components/form/InputField';
 import ButtonField from '@/components/form/ButtonField';
+import ButtonSwitch from '@/components/form/ButtonSwitch';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope';
@@ -53,7 +70,8 @@ export default {
     FontAwesomeIcon,
     Background,
     InputField,
-    ButtonField
+    ButtonField,
+    ButtonSwitch
   },
   data() {
     return {
@@ -102,7 +120,24 @@ export default {
 
 <style lang="scss" scoped>
 .login {
-  padding: 0 10px;
+  padding: 10px 15px;
+
+  .link-login {
+    position: absolute;
+    right: 0;
+    padding-right: 15px;
+    text-decoration: none;
+    color: #2c60d9;
+
+    @media only screen and (max-width: 600px) {
+      padding-right: 10px;
+    }
+  }
+
+  h1 {
+    color: #5700d0;
+  }
+
   .form {
     .button-form {
       margin-top: 30px;

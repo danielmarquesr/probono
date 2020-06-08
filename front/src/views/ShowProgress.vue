@@ -2,25 +2,11 @@
   <div class="show-progress">
     <b>id:</b> {{ progress.id }}
     <br />
-    <b>title:</b> {{ progress.title }}
-    <br />
     <b>date:</b> {{ progress.date }}
     <br />
     <b>description:</b> {{ progress.description }}
     <br />
-    <b>Translations:</b>
-    <br />
-    <div
-      v-for="translation in progress.Translations"
-      :key="translation.id"
-    >
-      <b>id:</b> {{ translation.id }}
-      <br />
-      <b>explanation:</b> {{ translation.explanation }}
-      <br />
-      <b>textTarget:</b> {{ translation.textTarget }}
-      <br />
-    </div>
+    <div v-html="progress.translated" />
   </div>
 </template>
 
@@ -31,24 +17,48 @@ export default {
   name: 'ShowProgress',
   data() {
     return {
-      progress: {}
+      progress: {},
+      teste: ''
     }
   },
   mounted() {
-    const { progressId } = this.$route.params;
-    progressAPI.showProgress(progressId)
-      .then(res => {
-        this.progress = res.data;
-      })
-      .catch(error => {
-        console.error(error);
-      })
+    this.getProgress();
   },
   methods: {
+    translateDescription(progress) {
+      let description = progress.description;
+      const translations = progress.Translations;
 
+      let span = '';
+      let translated = description;
+      for(const translation of translations) {
+        span = `<span>${translation.explanation}</span>`;
+        translated = translated.replace(translation.textTarget, span);
+        progress.translated = translated;
+      }
+      this.progress = progress;
+      this.teste = '<p>This is a simple example to demonstrate usage of v-html</p><a href=”#”>Read more</a>';
+    },
+    getProgress() {
+      const { progressId } = this.$route.params;
+      progressAPI.showProgress(progressId)
+        .then(res => {
+          this.progress = res.data;
+          this.translateDescription(res.data)
+        })
+        .catch(error => {
+          console.error(error);
+        })
+      }
   }
 }
 </script>
+
+<style scoped>
+  div >>> span {
+    color: gray;
+  }
+</style>
 
 <style lang="scss" scoped>
 
