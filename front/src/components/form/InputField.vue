@@ -70,6 +70,7 @@ export default {
     position: relative;
     .input-field {
       width: 100%;
+      transition: all 0.5s;
       padding: 10px;
       outline: none;
       border-radius: 5px 0 0 5px;
@@ -77,7 +78,7 @@ export default {
       font-size: 15px;
       line-height: 20px;
       &:focus {
-        border: 1.5px solid #6500D5;
+        border: 2px solid #6500D5;
       }
       // border-width: 0;
       // border-bottom-width: 3px;

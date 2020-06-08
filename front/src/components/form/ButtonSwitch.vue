@@ -46,13 +46,15 @@ export default {
   display: flex;
   justify-content: center;
   position: relative;
-  width: 100%;
+  width: 93.5%;
   margin: 20px 0;
+  padding: 0 10px;
   &-div {
     display: flex;
     align-items: center;
+    width: 100%;
     .link {
-      width: 120px;
+      width: 50%;
       padding: 12px 0;
       font-size: 14px;
       font-weight: 600;

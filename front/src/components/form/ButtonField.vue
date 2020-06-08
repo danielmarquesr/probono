@@ -2,6 +2,12 @@
   <div>
     <button
       class="button"
+      :style="{
+        background,
+        padding: `${paddingV} ${paddingH}`,
+        width,
+        height
+      }"
       v-on:click.prevent="click()"
     >
       <slot />
@@ -15,7 +21,33 @@ export default {
   props: {
     click: {
       type: Function,
-      required: true
+      default: () => {},
+      required: false
+    },
+    background: {
+      type: String,
+      default: '',
+      required: false
+    },
+    paddingH: {
+      type: String,
+      default: '0',
+      required: false
+    },
+    paddingV: {
+      type: String,
+      default: '0',
+      required: false
+    },
+    width: {
+      type: String,
+      default: '',
+      required: false
+    },
+    height: {
+      type: String,
+      default: '',
+      required: false
     }
   }
 }

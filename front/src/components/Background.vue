@@ -36,7 +36,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #E5E9EA;
+  background: #f9f9f9;
   width: 100vw;
   height: 100vh;
 
@@ -48,6 +48,11 @@ export default {
     height: 400px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 6px;
+    border: 1px solid #d8dee2;
+
+    @media only screen and (max-width: 600px) {
+      width: 80%;
+    }
 
     .logo {
       position: absolute;
@@ -59,6 +64,10 @@ export default {
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
       background-image: url('../assets/images/logo.png');
       background-size: 100%;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
     }
 
     &-image {
@@ -69,6 +78,10 @@ export default {
       height: 100%;
       width: 350px;
       border-radius: 6px;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
     }
 
     .body {
