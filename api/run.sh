@@ -11,7 +11,8 @@ npm run migrate
 # echo ""
 # echo "---- NPM RUN SEED"
 # echo ""
-# npm run seed
+# npm run seed:undo:all
+# npm run seed:all
 
 echo ""
 echo "---- NPM RUN START"
