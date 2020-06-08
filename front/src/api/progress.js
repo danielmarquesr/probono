@@ -1,5 +1,10 @@
 import httpClient from '@/api/httpClient';
 
+const createProgress = (body) => {
+  const endpoint = '/progresses';
+  return httpClient.post(endpoint, body)
+};
+
 const indexProgressOfLawsuit = (lawsuitId) => {
   const endpoint = `/progresses/lawsuit/${lawsuitId}`;
   return httpClient.get(endpoint);
@@ -10,4 +15,4 @@ const showProgress = (progressId) => {
   return httpClient.get(endpoint);
 };
 
-export default { indexProgressOfLawsuit, showProgress };
+export default { createProgress, indexProgressOfLawsuit, showProgress };

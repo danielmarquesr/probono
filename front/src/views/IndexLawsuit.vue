@@ -1,5 +1,9 @@
 <template>
   <div class="lawsuit">
+    <router-link to="/regras-traducao">
+      REGRAS DE TRADUÇÃO
+    </router-link>
+    <br /><br />
     <div
       class="lawsuit-card"
       v-for="lawsuit in lawsuits"

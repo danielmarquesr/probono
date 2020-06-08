@@ -15,18 +15,20 @@ export default {
 <style lang="scss" scoped>
 .home {
   width: 100vw;
-  height: 100vh;
-  background: #e5e9ea;
+  min-height: 100vh;
+  background: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
   &-body {
+    margin: 8vh 0;
     width: 80vw;
-    height: 80vh;
+    min-height: 80vh;
+    height: auto;
     padding: 0.7rem;
     background: white;
     border-radius: 5px;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
 }
 </style>

@@ -3,7 +3,8 @@ import VueRouter from 'vue-router';
 
 // VIEWS
 import Home from '@/views/Home';
-import Translation from '@/views/Translation';
+import IndexTranslation from '@/views/IndexTranslation';
+import ShowTranslation from '@/views/ShowTranslation';
 import IndexLawsuit from '@/views/IndexLawsuit';
 import Login from '@/views/Login';
 import Register from '@/views/Register';
@@ -20,8 +21,13 @@ const routes = [
     children: [
       {
         path: 'regras-traducao',
-        name: 'Translation',
-        component: Translation,
+        name: 'IndexTranslation',
+        component: IndexTranslation,
+      },
+      {
+        path: 'regras-traducao/:translationId/processos',
+        name: 'ShowTranslation',
+        component: ShowTranslation,
       },
       {
         path: 'processos',
