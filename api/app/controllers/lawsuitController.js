@@ -7,7 +7,10 @@ controller.createLawsuit = async (req, res) => {
   const lawyer = await Lawyer.findOne({ where: { userId } });
   const lawyerId = lawyer.dataValues.id;
   const { date, description } = req.body;
-  const lawsuit = await Lawsuit.create({ date, description, lawyerId });
+  const clientId = 1;
+  const lawsuit = await Lawsuit.create({
+    date, description, lawyerId, clientId,
+  });
   res.status(201).json(lawsuit);
 };
 
