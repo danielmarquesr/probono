@@ -1,17 +1,11 @@
 <template>
   <div class="progress">
-    <ButtonField
-      v-if="userInfo.role === 'lawyer'"
-      :width="'200px'"
-      :click="() => {showModal = true}"
-    >
-      CRIAR
-    </ButtonField>
-
     <ProgressModal
       v-model="showModal"
       @refreshProgress="indexProgress"
     />
+
+    <h1>Andamentos</h1>
 
     <div
       class="progress-card"
@@ -19,27 +13,29 @@
       :key="progress.id"
       v-on:click="() => redirectToProgressShow(progress.id)"
     >
-      <b>id:</b> {{ progress.id }}
-      <br />
-      <b>date:</b> {{ progress.date }}
-      <br />
-      <b>description:</b> {{ progress.description }}
-      <br /><br />
+      <Card>
+        <b>Data:</b> {{ progress.date.slice(0, 10) }}
+        <br /><br />
+        <b>Descrição:</b><br /> {{ progress.description }}
+      </Card>
     </div>
+    <CreateButton :click="() => {showModal = true}" />
   </div>
 </template>
 
 <script>
+import Card from '@/components/Card';
+import CreateButton from '@/components/CreateButton';
 import ProgressModal from '@/components/ProgressModal';
-import ButtonField from '@/components/form/ButtonField';
 import progressAPI from '@/api/progress';
 import userAPI from '@/api/user';
 
 export default {
   name: 'IndexProgress',
   components: {
+    Card,
     ProgressModal,
-    ButtonField
+    CreateButton
   },
   data() {
     return {
@@ -77,5 +73,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.progress {
+  h1 {
+    margin-top: 0;
+  }
+}
 </style>

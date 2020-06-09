@@ -56,7 +56,7 @@
           <FontAwesomeIcon :icon="['fas', 'lock']" />
         </InputField>
 
-        <ButtonField class="button-form" :click="register">
+        <ButtonField :type="'submit'" class="button-form" :click="register">
           REGISTRAR
         </ButtonField>
       </form>

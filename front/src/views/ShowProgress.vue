@@ -1,23 +1,30 @@
 <template>
   <div class="show-progress">
-    <b>id:</b> {{ progress.id }}
-    <br />
-    <b>date:</b> {{ progress.date }}
-    <br />
-    <b>description:</b> {{ progress.description }}
-    <br />
-    <div v-html="progress.translated" />
+    <Card>
+      <b>Data:</b> {{ progress.date.slice(0, 10) }}
+      <br /><br />
+      <b>Descrição original:</b><br /> {{ progress.description }}
+      <br /><br />
+      <b>Descrição traduzida:</b><br />
+      <div v-html="progress.translated" />
+    </Card>
   </div>
 </template>
 
 <script>
+import Card from '@/components/Card';
 import progressAPI from '@/api/progress';
 
 export default {
   name: 'ShowProgress',
+  components: {
+    Card
+  },
   data() {
     return {
-      progress: {},
+      progress: {
+        date: ''
+      },
       teste: ''
     }
   },
@@ -42,9 +49,9 @@ export default {
     getProgress() {
       const { progressId } = this.$route.params;
       progressAPI.showProgress(progressId)
-        .then(res => {
-          this.progress = res.data;
-          this.translateDescription(res.data)
+        .then(async res => {
+          this.progress = await res.data;
+          await this.translateDescription(res.data)
         })
         .catch(error => {
           console.error(error);

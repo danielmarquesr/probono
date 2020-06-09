@@ -42,7 +42,7 @@
           <FontAwesomeIcon :icon="['fas', 'lock']" />
         </InputField>
 
-        <ButtonField class="button-form" :click="login">
+        <ButtonField :type="'submit'" class="button-form" :click="login">
           ENTRAR
         </ButtonField>
       </form>

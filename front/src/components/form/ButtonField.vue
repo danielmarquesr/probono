@@ -1,6 +1,7 @@
 <template>
   <div>
     <button
+      :type="{type}"
       class="button"
       :style="{
         background,
@@ -22,6 +23,11 @@ export default {
     click: {
       type: Function,
       default: () => {},
+      required: false
+    },
+    type: {
+      type: String,
+      default: '',
       required: false
     },
     background: {

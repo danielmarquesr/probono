@@ -2,6 +2,15 @@ const { Client, Lawyer, Lawsuit } = require('../models');
 
 const controller = {};
 
+controller.createLawsuit = async (req, res) => {
+  const { userId } = req;
+  const lawyer = await Lawyer.findOne({ where: { userId } });
+  const lawyerId = lawyer.dataValues.id;
+  const { date, description } = req.body;
+  const lawsuit = await Lawsuit.create({ date, description, lawyerId });
+  res.status(201).json(lawsuit);
+};
+
 controller.indexLawsuitOfLawyer = async (req, res) => {
   const { userId } = req;
   const lawyer = await Lawyer.findOne({ where: { userId } });

@@ -8,22 +8,25 @@
         class="progress-card"
         v-on:click="() => redirectToShowProgress(progress.id, progress.lawsuitId)"
       >
-        id: {{ progress.id }}
-        <br />
-        date: {{ progress.date }}
-        <br />
-        description: {{ progress.description }}
-        <br /><br />
+        <Card>
+          <b>Data:</b> {{ progress.date.slice(0, 10) }}
+          <br /><br />
+          <b>Descrição:</b><br /> {{ progress.description }}
+        </Card>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Card from '@/components/Card';
 import translationAPI from '@/api/translation';
 
 export default {
   name: 'ShowTranslation',
+  components: {
+    Card
+  },
   data() {
     return {
       translation: []

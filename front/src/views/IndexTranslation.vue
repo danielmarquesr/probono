@@ -1,16 +1,11 @@
 <template>
   <div class="index-translation">
-    <ButtonField
-      :width="'200px'"
-      :click="() => {showModal = true}"
-    >
-      CRIAR
-    </ButtonField>
-
     <TranslationModal
       v-model="showModal"
       @refreshTranslation="getTranslationsOfLawyer"
     />
+
+    <h1>Regras de tradução</h1>
 
     <div
       v-for="translation in translations"
@@ -20,27 +15,29 @@
         class="translation-card"
         v-on:click="() => redirectToShowTranslation(translation.id)"
       >
-        id: {{ translation.id }}
-        <br />
-        explanation: {{ translation.explanation }}
-        <br />
-        textTarget: {{ translation.textTarget }}
-        <br /><br />
+        <Card>
+          <b>Explicação:</b> {{ translation.explanation }}
+          <br /><br />
+          <b>Texto alvo:</b> {{ translation.textTarget }}
+        </Card>
       </div>
     </div>
+    <CreateButton :click="() => {showModal = true}" />
   </div>
 </template>
 
 <script>
+import Card from '@/components/Card';
+import CreateButton from '@/components/CreateButton';
 import translationAPI from '@/api/translation';
 import TranslationModal from '@/components/TranslationModal';
-import ButtonField from '@/components/form/ButtonField';
 
 export default {
   name: 'IndexTranslation',
   components: {
+    CreateButton,
     TranslationModal,
-    ButtonField
+    Card
   },
   data() {
     return {
@@ -69,5 +66,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.index-translation {
+  h1 {
+    margin-top: 0;
+  }
+}
 </style>
