@@ -1,5 +1,7 @@
 <template>
   <div class="show-progress">
+    <h1>Andamento traduzido</h1>
+
     <Card>
       <b>Data:</b> {{ progress.date.slice(0, 10) }}
       <br /><br />
@@ -68,5 +70,9 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-
+.show-progress {
+  h1 {
+    margin-top: 0;
+  }
+}
 </style>
